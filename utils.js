@@ -38,7 +38,7 @@ const createDom = html => {
 	const dom = new JSDOM(html)
 	const window = dom.window
 	const document = window.document
-	const getElementsArray = selector => Array.from(document.querySelectorAll(selector))
+	const getElementsArray = (selector, element) => Array.from((element || document).querySelectorAll(selector))
 
 	return { dom, window, document, getElementsArray }
 }

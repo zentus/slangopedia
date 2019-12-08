@@ -35,9 +35,10 @@ const search = async (searchTerm, options = {}) => {
 		.map(replaceBrTags)
 
 	const tags = getElementsArray('.defcontainer .tags')
-		.map(tagsContainer => {
-			return Array.from(tagsContainer.querySelectorAll('a')).map(innerText).map(toLowerCase)
-		})
+		.map(tagsContainer => getElementsArray('a', tagsContainer)
+			.map(innerText)
+			.map(toLowerCase)
+		)
 
 	const upvotes = getElementsArray('.defcontainer span:nth-child(3)')
 		.map(innerText)
