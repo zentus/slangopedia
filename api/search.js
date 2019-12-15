@@ -12,6 +12,7 @@ const {
 	getRating,
 	createDom
 } = require('../utils')
+const getComments = require('./get-comments')
 
 const search = async (searchTerm, options = {}) => {
 	if ((!searchTerm || typeof searchTerm !== 'string') && !options.random) return false
