@@ -1,14 +1,16 @@
 const { JSDOM } = require('jsdom')
 const urlencode = require('urlencode')
+const striptags = require('striptags')
 
 const innerText = element => element.textContent
 const innerHTML = element => element.innerHTML
 const replaceBrTags = innerHTML => innerHTML.replace(/\<br\>/gi, '\n')
 const capitalize = string => string[0].toUpperCase() + string.slice(1)
 const toLowerCase = string => string.toLowerCase()
-const toUnixTimestamp = string => new Date(string).getTime() / 1000
+const toUnixTimestamp = string => new Date(string).getTime()
 const toNumber = string => parseInt(string, 10)
 const isAlphaNumeric = char => Boolean(char.match(/[a-zA-Z0-9]/))
+const stripTags = string => striptags(string)
 
 const encode = string => {
   return string
@@ -55,5 +57,6 @@ module.exports = {
 	encode,
 	getRating,
 	createFormData,
-	createDom
+	createDom,
+	stripTags
 }

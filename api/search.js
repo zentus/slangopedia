@@ -3,6 +3,7 @@ const {
 	innerText,
 	innerHTML,
 	replaceBrTags,
+	stripTags,
 	capitalize,
 	toLowerCase,
 	toUnixTimestamp,
@@ -27,12 +28,15 @@ const search = async (searchTerm, options = {}) => {
 
 	if (!definitionWords[0]) return false
 
-	const definitions = getElementsArray('.defcontainer .definition')
+	const contents = getElementsArray('.defcontainer .definition')
 		.map(innerText)
+		.map(capitalize)
 
 	const examples = getElementsArray('.defcontainer .example')
 		.map(innerHTML)
 		.map(replaceBrTags)
+		.map(stripTags)
+		.map(capitalize)
 
 	const tags = getElementsArray('.defcontainer .tags')
 		.map(tagsContainer => getElementsArray('a', tagsContainer)
@@ -63,7 +67,7 @@ const search = async (searchTerm, options = {}) => {
 		return [
 			...acc, {
 				definitionId: definitionIds[i],
-				content: definitions[i],
+				content: contents[i],
 				example: examples[i],
 				author: authors[i],
 				createdAt: timestamps[i],
@@ -84,8 +88,8 @@ const search = async (searchTerm, options = {}) => {
 
 	return {
 		word: definitionWords[0],
-		page: `http://www.slangopedia.se/ordlista/?ord=${encode(definitionWords[0])}`,
-		definitions: await finalDefinitions
+		definitions: await finalDefinitions,
+		url:`http://www.slangopedia.se/ordlista/?ord=${encode(definitionWords[0])}`
 	}
 }
 
