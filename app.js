@@ -4,12 +4,12 @@ const vote = require('./api/vote')
 const addDefinition = require('./api/add-definition')
 
 const Slangopedia = {
-	search,
-	random: async () => Slangopedia.search(false, { random: true }),
-	comments: getComments,
-	voteUp: async definitionId => vote('up', definitionId),
-	voteDown: async definitionId => vote('down', definitionId),
-	addDefinition
+  search,
+  random: async () => Slangopedia.search(false, { random: true }),
+  comments: getComments,
+  voteUp: async definitionId => vote('up', definitionId),
+  voteDown: async definitionId => vote('down', definitionId),
+  addDefinition
 }
 
 module.exports = Slangopedia
