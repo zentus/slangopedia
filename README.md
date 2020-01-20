@@ -1,6 +1,6 @@
 # slangopedia
 
-> A Node.js API for Slangopedia
+> A Node.js API for slangopedia.se
 
 <!--- [![NPM Version][npm-image]][npm-url] -->
 
@@ -29,7 +29,6 @@ Slangopedia.search('yani').then(console.log)
 ```
 ##### Options
 ###### **includeComments** (default: false)
-###### **random** (default: false)
 
 #### Example of a response definition object
 ```javascript
